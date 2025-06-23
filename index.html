@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RhythmX - Better Health. Peak Performance. Everywhere.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background-color: #f9fafb;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav {
+            display: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1f2937;
+            margin: 0 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #4f46e5;
+        }
+
+        @media (min-width: 768px) {
+            nav {
+                display: flex;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to right, #4f46e5, #3730a3);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            max-width: 48rem;
+            margin: 0 auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: white;
+            color: #4f46e5;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #f3f4f6;
+        }
+
+        .btn-primary {
+            background: #4f46e5;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            background: #3730a3;
+        }
+
+        /* Sections */
+        section {
+            padding: 2rem;
+        }
+
+        .section-gray {
+            background-color: #f3f4f6;
+        }
+
+        .section-white {
+            background-color: white;
+        }
+
+        .section-indigo {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .section-dark {
+            background: #111827;
+            color: #d1d5db;
+        }
+
+        h2 {
+            font-size: 1.875rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .grid-1 {
+            grid-template-columns: 1fr;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .grid-4 {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        @media (max-width: 640px) {
+            .grid-2, .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 1023px) {
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .grid-4 {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: #6b7280;
+        }
+
+        .card-center {
+            text-align: center;
+        }
+
+        .card-features h3 {
+            font-weight: bold;
+        }
+
+        /* Device Cards */
+        .device-container {
+            max-width: 64rem;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .device-container {
+                flex-direction: row;
+            }
+        }
+
+        .device-card {
+            background: #f3f4f6;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+            flex: 1;
+            margin: 0 0.5rem;
+        }
+
+        .device-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .device-card p {
+            color: #6b7280;
+        }
+
+        /* Features List */
+        .features-list {
+            text-align: left;
+        }
+
+        .features-list p {
+            color: #6b7280;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Impact Section */
+        .impact-content {
+            max-width: 48rem;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .impact-content p {
+            color: #374151;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Contact Buttons */
+        .contact-buttons {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: #d1d5db;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        footer a {
+            color: #d1d5db;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        /* Responsive text sizes */
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">RhythmX</div>
+        <nav>
+            <a href="#solutions">Solutions</a>
+            <a href="#devices">Devices</a>
+            <a href="#features">Features</a>
+            <a href="#impact">Impact</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Better Health. Peak Performance. Everywhere.</h1>
+        <p>
+            RhythmX harnesses the power of Heart Rate Variability (HRV) and biofeedback to enable athletes, families, seniors, and medical professionals to make smarter, data-driven health decisions every day.
+        </p>
+        <div class="hero-buttons">
+            <a href="#solutions" class="btn">For Athletes</a>
+            <a href="#solutions" class="btn">For Individuals</a>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section id="solutions" class="section-gray">
+        <h2>Solutions Tailored for Every Heartbeat</h2>
+        <div class="grid grid-4">
+            <div class="card">
+                <h3>Athletes & Coaches</h3>
+                <p>Optimize recovery, avoid soft tissue injuries, and stay at your best.</p>
+            </div>
+            <div class="card">
+                <h3>Everyday Users</h3>
+                <p>Maintain resilience and understand recovery and stress patterns.</p>
+            </div>
+            <div class="card">
+                <h3>Senior Care Services</h3>
+                <p>Early anomaly detection, medication reminders, and daily activity alerts.</p>
+            </div>
+            <div class="card">
+                <h3>Practitioners</h3>
+                <p>HRV patient monitoring for precision care and clinical assessments.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Devices Section -->
+    <section id="devices" class="section-white">
+        <h2>Integrated Devices for Smart Monitoring</h2>
+        <div class="device-container">
+            <div class="device-card">
+                <h3>Wristband</h3>
+                <p>Sleek, comfortable HRV and activity monitoring for everyday use.</p>
+            </div>
+            <div class="device-card">
+                <h3>ECG Reader</h3>
+                <p>Medical-grade precision for clinical and patient assessments.</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 1.5rem;">
+            <a href="#" class="btn-primary">Explore Devices</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section-gray">
+        <h2>Why RhythmX?</h2>
+        <div class="grid grid-3">
+            <div class="card card-center card-features">
+                <h3>Actionable Insights</h3>
+                <div class="features-list">
+                    <p>✅ Make complex HRV data easy to understand and actionable.</p>
+                    <p>✅ Continuous heart rate monitoring.</p>
+                    <p>✅ Blood Oxygen Saturation (SpO2)</p>
+                    <p>✅ On‑demand ECG for heart rhythm analysis.</p>
+                    <p>✅ Respiratory rate monitoring</p>
+                    <p>✅ Monitors body temperature</p>
+                    <p>✅ Blood pressure tracking</p>
+                    <p>✅ Fatigue detection</p>
+                    <p>✅ Stress level monitoring</p>
+                    <p>✅ Distance and calories</p>
+                </div>
+            </div>
+            <div class="card card-center card-features">
+                <h3>Integrated Devices</h3>
+                <p>Seamless experience with wristbands and clinical ECG readers.</p>
+            </div>
+            <div class="card card-center card-features">
+                <h3>Personalized Alerts</h3>
+                <p>Custom recovery recommendations and medication reminders.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact" class="section-white">
+        <h2>Better Results. Smarter Recovery. Longer Healthspan.</h2>
+        <div class="impact-content">
+            <p>✅ Athletes stay competitive and injury-free</p>
+            <p>✅ Individuals maintain daily health and resilience</p>
+            <p>✅ Senior citizens gain independence and quality of life</p>
+            <p>✅ Practitioners utilize precision metrics for patient care</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section-indigo">
+        <h2>Let's Make Every Heartbeat Count Together</h2>
+        <p style="text-align: center; margin-bottom: 1rem;">Contact us to learn how RhythmX can transform health, recovery, and performance for you or your practice.</p>
+        <div class="contact-buttons">
+            <a href="#" class="btn">Request Demo</a>
+            <a href="#" class="btn">Contact Sales</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 RhythmX. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+</body>
+</html>
