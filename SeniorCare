@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RhythmX - Senior Wellbeing Technology | Feel Safer. Stay Independent.</title>
+    <meta name="description" content="RhythmX provides continuous health monitoring for seniors through smart sensors and family dashboards. Improve safety, independence, and peace of mind.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.15"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-100px) translateY(-100px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            animation: slideInUp 1s ease-out;
+        }
+
+        .hero .tagline {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            margin-bottom: 30px;
+            opacity: 0.95;
+            font-weight: 300;
+            animation: slideInUp 1s ease-out 0.2s both;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            margin-bottom: 40px;
+            opacity: 0.9;
+            animation: slideInUp 1s ease-out 0.4s both;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 60px;
+            color: #2d3748;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.8);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+
+        .feature-list {
+            list-style: none;
+            text-align: left;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+            color: #4a5568;
+        }
+
+        .feature-list li::before {
+            content: '✅';
+            position: absolute;
+            left: 0;
+            top: 8px;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .benefits-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .benefits-text h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #2d3748;
+        }
+
+        .benefits-list {
+            list-style: none;
+        }
+
+        .benefits-list li {
+            padding: 15px 0;
+            font-size: 1.1rem;
+            color: #4a5568;
+            border-bottom: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .benefits-list li:hover {
+            color: #667eea;
+            padding-left: 10px;
+        }
+
+        .benefits-visual {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 40px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefits-visual::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .benefits-visual h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .benefits-visual p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: '"';
+            font-size: 4rem;
+            color: #667eea;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-family: serif;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #4a5568;
+            margin-top: 20px;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            color: white;
+            position: relative;
+        }
+
+        .cta-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .cta-text h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .cta-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .cta-features li {
+            padding: 10px 0;
+            font-size: 1.1rem;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .cta-features li::before {
+            content: '✅';
+            position: absolute;
+            left: 0;
+        }
+
+        /* CTA Form */
+        .cta-form {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .cta-form h3 {
+            color: #2d3748;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .cta-form p {
+            color: #4a5568;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: #c6f6d5;
+            color: #22543d;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 20px;
+            border: 2px solid #9ae6b4;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideInUp 0.5s ease-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 0 80px;
+            }
+
+            .features,
+            .benefits,
+            .testimonials {
+                padding: 60px 0;
+            }
+
+            .cta-section {
+                padding: 80px 0;
+            }
+
+            .cta-content,
+            .benefits-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid #ffffff;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>🎵 RhythmX for Senior Wellbeing</h1>
+                <p class="tagline">Feel Safer. Stay Independent. Stay Connected.</p>
+                <p class="subtitle">🧓 <strong>Because Every Beat Matters</strong><br>
+                RhythmX brings peace of mind to seniors, families, and care staff through continuous health insight — without interrupting your life.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">🩺 A Smart Health Companion That Cares as Much as You Do</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">❤️</span>
+                    <h3>Continuous Monitoring</h3>
+                    <ul class="feature-list">
+                        <li>Heart rate & HRV tracking</li>
+                        <li>ECG monitoring</li>
+                        <li>Sleep pattern analysis</li>
+                        <li>Fall detection alerts</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🏠</span>
+                    <h3>Family Dashboard</h3>
+                    <ul class="feature-list">
+                        <li>Real-time health updates</li>
+                        <li>Voice-activated check-ins</li>
+                        <li>Emergency alert system</li>
+                        <li>Peace of mind reporting</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🏥</span>
+                    <h3>Care Team Integration</h3>
+                    <ul class="feature-list">
+                        <li>Smart reports for medical staff</li>
+                        <li>Weekly wellness summaries</li>
+                        <li>HIPAA-compliant security</li>
+                        <li>Personalized insights</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="benefits-content">
+                <div class="benefits-text">
+                    <h2>🏡 For Residents. For Families. For Care Teams.</h2>
+                    <p style="font-size: 1.1rem; margin-bottom: 30px; color: #4a5568;">Care homes and assisted living centers use RhythmX to:</p>
+                    <ul class="benefits-list">
+                        <li>Improve efficiency and safety response</li>
+                        <li>Reduce emergency incidents</li>
+                        <li>Give families real-time connection and trust</li>
+                        <li>Stand out in a competitive care market</li>
+                        <li>Provide 24/7 monitoring without intrusion</li>
+                        <li>Generate detailed health insights</li>
+                    </ul>
+                </div>
+                <div class="benefits-visual">
+                    <h3>👨‍👩‍👧 Trusted by Families</h3>
+                    <p>"I sleep better knowing Mom's being looked after 24/7 — and I get an alert if anything changes."</p>
+                    <br>
+                    <p><strong>Care Staff:</strong> "It helps our staff know when to act — before it becomes an emergency."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Families & Care Teams Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">RhythmX gave us the confidence to let Dad stay independent longer. The family dashboard means we're never worried about missing something important.</p>
+                    <p class="testimonial-author">— Sarah M., Daughter</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">Our residents love that they can stay active and independent while their families have peace of mind. It's been a game-changer for our facility.</p>
+                    <p class="testimonial-author">— Jennifer L., Assisted Living Director</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">The early warning system has prevented three potential emergencies in our first month. Our response times improved dramatically.</p>
+                    <p class="testimonial-author">— Dr. Michael R., Medical Director</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <div class="cta-text">
+                    <h2>📦 Try RhythmX in Your Facility</h2>
+                    <ul class="cta-features">
+                        <li>Pilot with 5 Residents</li>
+                        <li>Staff & Family Training Included</li>
+                        <li>HIPAA-Compliant & Fully Secure</li>
+                        <li>30-Day Risk-Free Trial</li>
+                        <li>Dedicated Implementation Support</li>
+                    </ul>
+                    <p style="font-size: 1.1rem; opacity: 0.9;">Join the growing network of care facilities providing next-generation senior monitoring.</p>
+                </div>
+                
+                <div class="cta-form">
+                    <h3>Schedule Your Pilot Demo</h3>
+                    <p>Get started with RhythmX today. Our team will contact you within 24 hours.</p>
+                    
+                    <form id="ctaForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="facilityType">Facility Type *</label>
+                            <select id="facilityType" name="facilityType" required>
+                                <option value="">Select your facility type</option>
+                                <option value="assisted-living">Assisted Living</option>
+                                <option value="nursing-home">Nursing Home</option>
+                                <option value="senior-community">Senior Living Community</option>
+                                <option value="home-care">Home Care Agency</option>
+                                <option value="family">Family/Individual</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="residents">Number of Residents</label>
+                            <select id="residents" name="residents">
+                                <option value="">Select resident count</option>
+                                <option value="1-10">1-10 residents</option>
+                                <option value="11-25">11-25 residents</option>
+                                <option value="26-50">26-50 residents</option>
+                                <option value="51-100">51-100 residents</option>
+                                <option value="100+">100+ residents</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Tell us about your needs</label>
+                            <textarea id="message" name="message" placeholder="What challenges are you hoping RhythmX can help solve? Any specific questions about the pilot program?"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            Schedule My Demo & Pilot
+                        </button>
+                        
+                        <div class="success-message" id="successMessage">
+                            <h4>🎉 Thank you for your interest!</h4>
+                            <p>We've received your request and will contact you within 24 hours to schedule your RhythmX demo and pilot program. Check your email for confirmation details.</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('ctaForm');
+            const submitBtn = form.querySelector('.submit-btn');
+            const successMessage = document.getElementById('successMessage');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Add loading state
+                submitBtn.classList.add('loading');
+                submitBtn.textContent = 'Submitting...';
+                
+                // Collect form data
+                const formData = new FormData(form);
+                const data = {};
+                for (let [key, value] of formData.entries()) {
+                    data[key] = value;
+                }
+                
+                // Simulate form submission (replace with actual API call)
+                setTimeout(() => {
+                    console.log('Form submitted:', data);
+                    
+                    // Show success message
+                    successMessage.classList.add('show');
+                    form.style.display = 'none';
+                    
+                    // Reset loading state
+                    submitBtn.classList.remove('loading');
+                    submitBtn.textContent = 'Schedule My Demo & Pilot';
+                    
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 2000);
+            });
+            
+            // Add smooth scrolling for better UX
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Add form validation feedback
+            const inputs = form.querySelectorAll('input[required], select[required]');
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    if (this.value.trim() === '') {
+                        this.style.borderColor = '#e53e3e';
+                    } else {
+                        this.style.borderColor = '#48bb78';
+                    }
+                });
+                
+                input.addEventListener('input', function() {
+                    if (this.value.trim() !== '') {
+                        this.style.borderColor = '#48bb78';
+                    }
+                });
+            });
+            
+            // Phone number formatting
+            const phoneInput = document.getElementById('phone');
+            phoneInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length >= 6) {
+                    value = value.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+                } else if (value.length >= 3) {
+                    value = value.replace(/(\d{3})(\d{3})/, '($1) $2');
+                }
+                e.target.value = value;
+            });
+        });
+    </script>
+</body>
+</html>
